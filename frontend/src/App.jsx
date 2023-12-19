@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <h1>Tenant-Care App</h1>
+      <h1>Tenant-Care App !</h1>
     </>
   )
 }

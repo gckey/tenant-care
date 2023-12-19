@@ -1,16 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import { useState } from 'react';
+import HomePage from './components/HomePage';
+import LogInPage from './components/LogInPage';
 import './App.css'
+import Header from './components/Header';
 
+
+//Render all components
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState("")
 
+  const onLogInClicked = (username, password) => {
+    console.log("LOGIN--->", username, password);
+  };
+  
   return (
-    <>
-      <h1>Tenant-Care App !</h1>
-    </>
-  )
-}
+    <div>
+      <h1>Tenant-Care App</h1>
+      <Header />
+      <HomePage />
+      {!user && <LogInPage onLogInClicked={onLogInClicked} />}
+    </div>
+  );
+};
 
-export default App
+export default App;

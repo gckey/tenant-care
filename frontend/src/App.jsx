@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/Header';
 import MaintenanceReqList from './components/MaintenanceReqList';
 import { Routes, Route } from 'react-router-dom';
+import MaintenanceReqList from './components/MaintenanceReqList';
 
 
 //Render all components

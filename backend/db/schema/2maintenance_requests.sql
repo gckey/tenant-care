@@ -1,4 +1,5 @@
 -- Create maintenance_requests table
+DROP TABLE IF EXISTS maintenance_requests CASCADE;
 CREATE TABLE maintenance_requests (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,

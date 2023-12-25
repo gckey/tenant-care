@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db/connection');
+const db = require('../../db/connection');
 
 
-router.post('/api/login', async (req, res) => {
+router.post('/', async (req, res) => {
     const { email, password } = req.body;
     try {
         const userQuery = await db.query('SELECT * FROM users WHERE email = $1', [email]);

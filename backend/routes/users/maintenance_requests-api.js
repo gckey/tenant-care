@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const maintenance_requests = require('../db/queries/maintenance_requests');
+const maintenance_requests = require('../../db/queries/maintenance_requests');
 
 router.post('/api/maintenance-requests', async (req, res) => {
     try {

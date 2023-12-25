@@ -22,7 +22,7 @@ function App() {
       <main>
         <HomePage />
         {/* {!user && <LogInPage onLogInClicked={onLogInClicked} />} */}
-        <MaintenanceReqList />
+        <LogInPage />
       </main>
     </div>
   );

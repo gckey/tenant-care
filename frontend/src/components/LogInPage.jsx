@@ -13,15 +13,40 @@ const LogInPage = (props) => {
   const [emailVal, setEmailVal] = useState("");
   const [passwordVal, setPasswordVal] = useState("");
 
-const onSubmit = function(event) {
+// const onSubmit = function(event) {
+//   event.preventDefault();
+//   emailVal && props.onLogInClicked(emailVal, passwordVal);//calls login func
+// };
+const handleLogin = async (event) => {
   event.preventDefault();
-  emailVal && props.onLogInClicked(emailVal, passwordVal);//calls login func
-};
+  const URL = "http://localhost:8080/api/login/";
+  const settings = {
+      method: "POST",
+      body: JSON.stringify({
+          email: emailVal,
+          password: passwordVal
+      }),
+      headers: {
+          "Content-type": "application/json"
+      }
+  }
 
+  const response = await fetch(URL, settings);
+  console.log(Response);
+  const data = await response.json();
+
+  if (data.success) {
+      console.log('Login successful:', data.user);
+      // Further actions on successful login (e.g., redirect, store user data)
+  } else {
+      console.log('Login failed:', data.message);
+      // Handle login failure (e.g., show error message)
+  }
+}
   return (
     <div className="login-wrapper">
       <h2>Please Log In</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleLogin}>
       <label>
           <p>Enter email or username</p>
           <input

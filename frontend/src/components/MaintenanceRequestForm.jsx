@@ -8,39 +8,67 @@ const MaintenanceRequestForm = (props) => {
 
   return (
     <div>
-      <div className="MaintenanceRequest">
+      <div className="maintenanceRequest">
         <h2>Maintenance Request Form</h2>
         <form>
           <div>
-            <label htmlFor="maintenReqId">
-              Id:
+            <label htmlFor="priority">
+              Priority:
             </label>
-              <input
-                type="number"
-                id="maintenReqId"
-                name="id"
-              />
-            </div>
+            <input
+              type="text"
+              id="priority"
+              name="priority"
+            />
+          </div>
+
           <div>
-            <label htmlFor="maintenReqDescription">
+            <label htmlFor="category">
+              Category:
+            </label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="description">
               Description:
             </label>
-              <input
-                type="text"
-                id="maintenReqDescription"
-                name="description"
-              />
-            </div>            
-            <div>
-            <label htmlFor="maintenReqStatus">
-              Status:
+            <input
+              type="text"
+              id="description"
+              name="description"
+            />
+          </div>   
+
+          <div>
+            <label htmlFor="permissionToEnter">
+              Permission to Enter:
             </label>
-              <input
-                type="text"
-                id="maintenReqStatus"
-                name="Status"
-              />
-            </div>
+            <input
+              type="text"
+              id="permissionToEnter"
+              name="permissionToEnter"
+            />
+          </div>         
+          
+          <div>
+            <label htmlFor="pic">
+              Choose pic to upload:
+            </label>
+            <input
+              type="file"
+              id="pic"
+              name="pic" 
+            />
+            <input type="submit" />
+          </div>
+          <br /><br/>
+
+
             <button className="btn btn-primary">
               Submit
             </button>

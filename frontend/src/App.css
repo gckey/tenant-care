@@ -16,8 +16,33 @@
 
 
 
-.container {
+/* .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+} */
+
+.nav-options {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar-right li button {
+  margin-top: 8px;
+}
+
+main {
+  display: block;
+}
+
+.maintenanceReqItem {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+label {
+  display: inline-block;
+  width: 250px;
+  text-align: left;
 }

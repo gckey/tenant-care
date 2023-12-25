@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./db/connection');
+const db = require('../db/connection');
 
 
 router.post('/api/login', async (req, res) => {
@@ -26,3 +26,4 @@ router.post('/api/login', async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error', error: err.message });
     }
 });
+module.exports = router;

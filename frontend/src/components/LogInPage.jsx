@@ -6,10 +6,11 @@
  */
 
 import { useState } from "react";
-// import { Link } from "react-router";
-// import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 
 const LogInPage = (props) => {
+  const navigate = useNavigate();
   const [emailVal, setEmailVal] = useState("");
   const [passwordVal, setPasswordVal] = useState("");
 
@@ -32,8 +33,11 @@ const handleLogin = async (event) => {
   }
 
   const response = await fetch(URL, settings);
-  console.log(Response);
+  // console.log(response);
   const data = await response.json();
+  // console.log(data);
+  props.setUserInfo(data);
+  navigate("/maintenance-request");
 
   if (data.success) {
       console.log('Login successful:', data.user);

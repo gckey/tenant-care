@@ -1,17 +1,18 @@
 const MaintenanceReqItem = (props) => {
+  const { id, request_date, description, priority, category, image_url, permission, status } = props.mainte_request;
 
   return (
-    
-    <div className="maintenanceReqItem content-container">
-      
-      <h4>{props.id}</h4>
-      <h4>{props.description}</h4>
-      <h4>{props.status}</h4>
-
-    </div>
-
+    <tr>
+      <td>{id}</td>
+      <td>{request_date}</td>
+      <td>{description}</td>
+      <td>{priority}</td>
+      <td>{category}</td>
+      <td>{image_url}</td>
+      <td>{permission}</td>
+      <td><span className="badge badge-warning">{status}</span></td>
+    </tr>
   );
-
-}
+};
 
 export default MaintenanceReqItem;

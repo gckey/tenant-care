@@ -3,8 +3,8 @@ import { MaintenanceRequestItems } from "../mock-data/MaintenanceRequestItems"
 import MaintenanceReqItem from "./MaintenanceReqItem";
 import MaintenanceRequestForm from "./MaintenanceRequestForm";
 
-const MaintenanceReqList = () => {
-
+const MaintenanceReqList = (props, user) => {
+  // console.log(props);
   const [listOfMaintenanceReqts, setListOfMaintenanceReqts] = useState(MaintenanceRequestItems);
   console.log(listOfMaintenanceReqts);
 
@@ -14,6 +14,9 @@ const MaintenanceReqList = () => {
 
   return (
     <div>
+      <h2>
+        Welcome <strong>{props.userInfo.user.first_name} {props.userInfo.user.last_name}!</strong>
+      </h2>
       <MaintenanceRequestForm 
         addingMainteRequest={addingMainteRequest}
       />

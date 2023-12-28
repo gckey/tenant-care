@@ -17,7 +17,7 @@ const createRequest = async ({ user_id, description, priority, category, image_u
     return allRequests.rows;
   };
   const getRequestById = async (id) => {
-    const requestQuery = 'SELECT * FROM maintenance_requests WHERE id = $1;';
+    const requestQuery = 'SELECT * FROM maintenance_requests WHERE user_id = $1;';
     const request = await db.query(requestQuery, [id]);
     return request.rows[0];
   };
@@ -42,9 +42,25 @@ const createRequest = async ({ user_id, description, priority, category, image_u
     return updatedRequest.rows[0];
   };
   const deleteRequest = async (id) => {
-    const deleteRequestQuery = 'DELETE FROM maintenance_requests WHERE id = $1 RETURNING *;';
+    const deleteRequestQuery = 'DELETE FROM maintenance_requests WHERE user_id = $1 RETURNING *;';
     const deletedRequest = await db.query(deleteRequestQuery, [id]);
     return deletedRequest.rows[0];
   };
-  module.exports = {createRequest, getAllRequests,getRequestById,updateRequest,deleteRequest };
+
+//Maint Req history by user ID
+const getMainteReqByUserId = async (userId) => {
+  try {
+    const query = `
+      SELECT *
+      FROM maintenance_requests
+      WHERE user_id = $1;
+    `;
+    const result = await db.query(query, [userId]);
+    return result.rows;
+  } catch (err) {
+    throw new Error(`Error retrieving maintenance requests: ${err.message}`);
+  }
+};
+
+module.exports = { createRequest, getAllRequests, getRequestById, getMainteReqByUserId, updateRequest, deleteRequest };
   

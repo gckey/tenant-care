@@ -5,7 +5,7 @@ import './App.css'
 import Header from './components/Header';
 import MaintenanceReqList from './components/MaintenanceReqList';
 import { Routes, Route } from 'react-router-dom';
-import MaintenanceReqList from './components/MaintenanceReqList';
+
 
 
 //Render all components
@@ -20,12 +20,13 @@ function App() {
         <Header />
       </nav>
       <Routes>
+        <Route path="/" element={<LogInPage/>}/>
         <Route 
           path="/login" 
           element={<LogInPage setUserInfo={setUserInfo}/>}
         />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/maintenance-request" element={<MaintenanceReqList />} />
+        <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo}/>}/>
       </Routes>
     </div>
   );

@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router-dom';
 
 
 
+
 //Render all components
 function App() {
   const [userInfo, setUserInfo] = useState({});
@@ -20,7 +21,7 @@ function App() {
         <Header />
       </nav>
       <Routes>
-        <Route path="/" element={<LogInPage/>}/>
+        <Route path="/" element={<LogInPage setUserInfo={setUserInfo}/>}/>
         <Route 
           path="/login" 
           element={<LogInPage setUserInfo={setUserInfo}/>}

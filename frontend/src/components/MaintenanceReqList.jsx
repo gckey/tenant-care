@@ -1,39 +1,56 @@
-import { useState } from "react"
-import { MaintenanceRequestItems } from "../mock-data/MaintenanceRequestItems" 
+import { useEffect, useState } from "react"
 import MaintenanceReqItem from "./MaintenanceReqItem";
-import MaintenanceRequestForm from "./MaintenanceRequestForm";
 
-const MaintenanceReqList = () => {
+const MaintenanceReqList = (props) => {
+  
+  const [listOfMaintenanceReqts, setListOfMaintenanceReqts] = useState([]);
 
-  const [listOfMaintenanceReqts, setListOfMaintenanceReqts] = useState(MaintenanceRequestItems);
-  console.log(listOfMaintenanceReqts);
+  
+  useEffect(() => {
+    const fetchMainteReq = async () => {
+      const URL = `http://localhost:8080/api/maintenance-requests/${props.userInfo.user.id}`;
+      const settings = {
+        method: "GET"
+      };
+      const response = await fetch(URL, settings);
+      const data = await response.json();
 
-  const addingMainteRequest = (newMaintenReq) => {
-    setListOfMaintenanceReqts(prevList => [...prevList], newMaintenReq);
-  }
+      console.log(data);
+      setListOfMaintenanceReqts(data);
+
+    }
+    fetchMainteReq();
+  }, []);
 
   return (
     <div>
-      <MaintenanceRequestForm 
-        addingMainteRequest={addingMainteRequest}
-      />
+      <h3>
+        Welcome <strong>{props.userInfo.user.email}!</strong>
+      </h3>
+      
       <br />
       <h2>Maintenance Request History</h2>
-      <div className="maintenanceReqList">
-        {listOfMaintenanceReqts.map((mainte_request, index) => {
-          return (
-            <MaintenanceReqItem
-              id={mainte_request.id}
-              description={mainte_request.description}
-              status={mainte_request.status}
-              
-              key={index} 
-            />
-          );
-        })}
-      </div>
+      <table className="maintenanceReqList">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Category</th>
+            <th>Picture</th>
+            <th>Permission to Enter</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {listOfMaintenanceReqts.map((mainte_request, index) => (
+            <MaintenanceReqItem mainte_request={mainte_request} key={index} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default MaintenanceReqList;

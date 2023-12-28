@@ -10,7 +10,7 @@ const MaintenanceReqItem = (props) => {
       <td>{category}</td>
       <td>{image_url}</td>
       <td>{permission}</td>
-      <td><span class="badge badge-warning">{status}</span></td>
+      <td><span className="badge badge-warning">{status}</span></td>
     </tr>
   );
 };

@@ -68,3 +68,8 @@ label {
 .maintenanceReqItem:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.navbar-right li button a {
+  color: #fff;
+  text-decoration: none;
+}

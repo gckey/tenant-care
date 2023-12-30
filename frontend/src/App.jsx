@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import HomePage from './components/HomePage';
 import LogInPage from './components/LogInPage';
+import MaintenanceRequestForm from './components/MaintenanceRequestForm';
 import './App.css'
 import Header from './components/Header';
 import MaintenanceReqList from './components/MaintenanceReqList';
@@ -27,7 +28,12 @@ function App() {
           element={<LogInPage setUserInfo={setUserInfo}/>}
         />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo}/>}/>
+        <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo}/>}>
+          <Route 
+            path="/maintenance-request/new" 
+            element={<MaintenanceRequestForm />}
+          />
+        </Route>
       </Routes>
     </div>
   );

@@ -4,13 +4,18 @@
  * @returns 
  */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 const MaintenanceRequestForm = (props) => {
+
   const [priorityVal, setPriorityVal] = useState("low");
   const [categoryVal, setCategoryVal] = useState("");
   const [descriptionVal, setDescriptionVal] = useState("");
   const [permissionToEnterVal, setPermissionToEnterVal] = useState("No");
+  const [statusVal, setStatusVal] = useState("Not Started");
   const [picVal, setPicVal] = useState("");
-  
+  console.log(props);
+  const navigate = useNavigate();
 
   const handleSumbit = async (event) => {
     event.preventDefault();
@@ -18,11 +23,13 @@ const MaintenanceRequestForm = (props) => {
     const settings = {
         method: "POST",
         body: JSON.stringify({
-            description : descriptionVal,
             priority: priorityVal,
             category: categoryVal,
+            description: descriptionVal,
+            permission: permissionToEnterVal,            
             image_url: picVal,
-            premission: permissionToEnterVal
+            status: statusVal,
+            user_id: localStorage.getItem("user_id")
         }),
         headers: {
             "Content-type": "application/json"
@@ -32,7 +39,8 @@ const MaintenanceRequestForm = (props) => {
     const response = await fetch(URL, settings);
     console.log(Response);
     const data = await response.json();
-  
+    navigate("/maintenance-request");
+
     if (data.success) {
         console.log('successful:');
         // Further actions on successful login (e.g., redirect, store user data)

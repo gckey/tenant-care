@@ -5,7 +5,7 @@ const maintenance_requests = require('../../db/queries/maintenance_requests');
 router.post('/', async (req, res) => {
     try {
       const { user_id, description, priority, category, image_url, permission, status, feedback } = req.body;
-      const newRequest = await createRequest({ user_id, description, priority, category, image_url, permission, status, feedback });
+      const newRequest = await maintenance_requests.createRequest({ user_id, description, priority, category, image_url, permission, status, feedback });
       res.status(201).json(newRequest);
     } catch (err) {
       console.error(err.message);

@@ -14,10 +14,6 @@ const LogInPage = (props) => {
   const [emailVal, setEmailVal] = useState("");
   const [passwordVal, setPasswordVal] = useState("");
 
-// const onSubmit = function(event) {
-//   event.preventDefault();
-//   emailVal && props.onLogInClicked(emailVal, passwordVal);//calls login func
-// };
 const handleLogin = async (event) => {
   event.preventDefault();
   const URL = "http://localhost:8080/api/login/";
@@ -36,6 +32,7 @@ const handleLogin = async (event) => {
   // console.log(response);
   const data = await response.json();
   // console.log(data);
+  localStorage.setItem("user_id", data.user.id);
   props.setUserInfo(data);
   navigate("/maintenance-request");
 

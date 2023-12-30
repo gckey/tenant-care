@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import { Link, Outlet } from 'react-router-dom';
 import MaintenanceReqItem from "./MaintenanceReqItem";
 
 const MaintenanceReqList = (props) => {
   
   const [listOfMaintenanceReqts, setListOfMaintenanceReqts] = useState([]);
 
+  const addingMainteRequest = (newMaintenReq) => {
+    setListOfMaintenanceReqts(prevList => [...prevList], newMaintenReq);
+  }
   
   useEffect(() => {
     const fetchMainteReq = async () => {
@@ -20,13 +24,20 @@ const MaintenanceReqList = (props) => {
 
     }
     fetchMainteReq();
-  }, []);
+  // Set interval for periodic update
+  const interval = setInterval(() => {
+    fetchMainteReq();}, 5000);
+
+  // Cleanup interval on component unmount
+  return () => clearInterval(fetchMainteReq);
+
+}, [props.userInfo.user.id]);
 
   return (
     <div>
-      <h3>
-        Welcome <strong>{props.userInfo.user.email}!</strong>
-      </h3>
+      <h4>
+      <strong>Hello {props.userInfo.user.first_name} !<br/>{props.userInfo.user.street}</strong>
+      </h4>
       
       <br />
       <h2>Maintenance Request History</h2>
@@ -49,6 +60,11 @@ const MaintenanceReqList = (props) => {
           ))}
         </tbody>
       </table>
+      <br />
+        <Link to="/maintenance-request/new">
+          Report Issue
+        </Link>
+        <Outlet addingMainteRequest={addingMainteRequest} />
     </div>
   );
 };

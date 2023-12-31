@@ -6,6 +6,7 @@ const AdminDashboard = () => {
     const [activeRequests, setActiveRequests] = useState([]);
     const [historicalRequests, setHistoricalRequests] = useState([]);
     const [requests, setRequests] = useState([]);
+    const [currentView, setCurrentView] = useState('active'); // Possible values: 'active', 'history'
 
     useEffect(() => {
         const fetchRequests = async () => {
@@ -112,13 +113,20 @@ const AdminDashboard = () => {
     return (
         <div className="container">
             <h1>Admin Dashboard</h1>
-
+            <button onClick={() => setCurrentView('active')}>Active Requests</button>
+            <button onClick={() => setCurrentView('history')}>History Requests</button>
+             
+            {currentView === 'active' ? (
+               <div>
             <h2>Active Requests</h2>
             {activeRequests.length > 0 ? renderRequestsTable(activeRequests) : <p>No active requests found.</p>}
-
+             </div>
+           ) : (  <div>
             <h2>Historical Requests</h2>
             {historicalRequests.length > 0 ? renderRequestsTable(historicalRequests) : <p>No historical requests found.</p>}
         </div>
+    )};
+    </div>
     );
 };
 

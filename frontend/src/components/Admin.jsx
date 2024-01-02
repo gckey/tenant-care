@@ -76,7 +76,7 @@ const AdminDashboard = () => {
             </thead>
             <tbody>
                 {requests.map(request => (
-                    <tr key={request.id} className={`priority-${request.priority.toLowerCase()}`}>
+                   <tr key={request.id} className={`priority-${request.priority ? request.priority.toLowerCase() : ''}`}>
                         <td>{request.id}</td>
                         <td>{request.category}</td>
                         <td>{request.description}</td>
@@ -125,7 +125,7 @@ const AdminDashboard = () => {
             <h2>Historical Requests</h2>
             {historicalRequests.length > 0 ? renderRequestsTable(historicalRequests) : <p>No historical requests found.</p>}
         </div>
-    )};
+    )}
     </div>
     );
 };

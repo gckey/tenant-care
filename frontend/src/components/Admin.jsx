@@ -15,8 +15,8 @@ const AdminDashboard = () => {
                 const fetchedRequests = response.data;
 
                 // Categorize requests into active and historical
-                const active = fetchedRequests.filter(req => req.status !== 'Completed');
-                const history = fetchedRequests.filter(req => req.status === 'Completed');
+                const active = fetchedRequests.filter(req => req.status !== 'Resolved');
+                const history = fetchedRequests.filter(req => req.status ==='Resolved');
 
                 setActiveRequests(active);
                 setHistoricalRequests(history);
@@ -59,9 +59,12 @@ const AdminDashboard = () => {
 };
 
     const renderRequestsTable = (requests) => (
+        
+       
         <table>
             <thead>
-                <tr>
+                <tr> 
+                    <th>Full Name</th>
                     <th>ID</th>
                     <th>Category</th>
                     <th>Description</th>
@@ -77,6 +80,7 @@ const AdminDashboard = () => {
             <tbody>
                 {requests.map(request => (
                    <tr key={request.id} className={`priority-${request.priority ? request.priority.toLowerCase() : ''}`}>
+                      <td>{`${request.first_name} ${request.last_name}`}</td>
                         <td>{request.id}</td>
                         <td>{request.category}</td>
                         <td>{request.description}</td>
@@ -85,10 +89,10 @@ const AdminDashboard = () => {
                                 value={request.status}
                                 onChange={(e) => handleStatusChange(e, request.id)}
                             >
-                                <option value="Not Started">Not Started</option>
+                                <option value="New">New</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Assigned">Assigned</option>
-                                <option value="Completed">Completed</option>
+                                <option value="Resolved">Resolved</option>
                                                                                          
                             </select>
                         </td>
@@ -97,9 +101,9 @@ const AdminDashboard = () => {
                         <td>{request.user_id}</td>
                         <td>{request.permission}</td>
                         <td>{request.feedback || 'N/A'}</td>
-                        <td>
+                        <td>    
                             {request.image_url ? (
-                                <img src={request.image_url} alt="Request" style={{ maxWidth: '100px', maxHeight: '100px' }} />
+                                <img src={request.image_url} alt="Request" style={{ maxWidth: '300px', maxHeight: '300px' }} />
                             ) : (
                                 'None'
                             )}

@@ -12,6 +12,7 @@ const app = express();
 const cors =require ('cors');
 const maintenanceRoutes = require('./routes/users/maintenance_requests-api');
 const loginRoutes = require('./routes/users/Login-api');
+const Signup= require('./routes/users/SignUp_api');
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -45,6 +46,7 @@ app.use(express.json());
 app.use('/api/maintenance-requests', maintenanceRoutes);
 // Login API endpoint
 app.use('/api/login', loginRoutes);
+app.use('/api/Signup', Signup);
 
 
 

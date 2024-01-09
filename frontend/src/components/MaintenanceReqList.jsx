@@ -19,19 +19,17 @@ const MaintenanceReqList = (props) => {
       const response = await fetch(URL, settings);
       const data = await response.json();
 
-      console.log(data);
+ 
       setListOfMaintenanceReqts(data);
 
     }
     fetchMainteReq();
-  // Set interval for periodic update
-  const interval = setInterval(() => {
-    fetchMainteReq();}, 5000);
+    const intervalId = setInterval(() => {
+      fetchMainteReq(); // function to fetch data from server
+  }, 5000); // Fetch data every 5 seconds
 
-  // Cleanup interval on component unmount
-  return () => clearInterval(fetchMainteReq);
-
-}, [props.userInfo.user.id]);
+  return () => clearInterval(intervalId);
+}, []);
 
   return (
     <div>

@@ -14,6 +14,7 @@ const MaintenanceRequestForm = (props) => {
   const [permissionToEnterVal, setPermissionToEnterVal] = useState("No");
   const [statusVal, setStatusVal] = useState("Not Started");
   const [picVal, setPicVal] = useState("");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   console.log(props);
   const navigate = useNavigate();
 
@@ -42,13 +43,14 @@ const MaintenanceRequestForm = (props) => {
     navigate("/maintenance-request");
 
     if (data.success) {
-        console.log('successful:');
+        console.log('successful:', data.message);
         // Further actions on successful login (e.g., redirect, store user data)
     } else {
-        console.log(' failed:', data.message);
+        console.log('failed:', data.message);
         // Handle login failure (e.g., show error message)
     }
   }
+ 
   return (
     <div>
       <div className="maintenanceRequest">
@@ -111,12 +113,14 @@ const MaintenanceRequestForm = (props) => {
               Choose pic to upload:
             </label>
             <input
-              type="file"
+              type="Text"
               id="pic"
               name="pic" 
               value={picVal}
               onChange={e => setPicVal(e.target.value)}
             />
+             {imagePreviewUrl && <img src={imagePreviewUrl} alt="Preview" />} {/* Image preview */}
+          
             {/* <input type="submit" /> */}
           </div>
           <br /><br/>

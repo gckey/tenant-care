@@ -13,23 +13,23 @@ router.post('/', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = await db.query(
             'INSERT INTO users (first_name, last_name, email, password, street, postal_code, city, phone, role) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *;',
-            [first_name, last_name, email, hashedPassword, street, postal_code, city, phone, role]
+            [first_name, last_name, email,hashedPassword, street, postal_code, city, phone, role]
         );
-        res.status(201).json(newUser);
-        res.redirect('/signup-success');
+       res.status(201).json( {success:true, newUser});
+        //res.status(201).json({ message: 'Status updated successfully' });
           }  catch (error) {
             if (error.code === '23505') { // Unique constraint violation
                 // Render the signup page again with an error message
-                res.render('signup', { error: 'Email already exists. Please use a different email.' });
+                res.status(409).json({ Message: 'Email already exists. Please use a different email.' });
             } else {
                 // Handle other errors
-                res.status(500).send('Error during signup');
+                res.status(500).json({ message: 'Internal Server Error' });
             }
         }
     });
 
-router.get('/signup-success', (req, res) => {
-    res.send('Signup successful!');
-});
+// router.get('/signup-success', (req, res) => {
+//     res.send('Signup successful!');
+// });
 
 module.exports = router;

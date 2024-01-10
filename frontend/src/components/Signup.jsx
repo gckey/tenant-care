@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from "react-router";
 function Signup() {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -12,31 +12,31 @@ function Signup() {
         phone: '',
         role: ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const URL = "http://localhost:8080/api/signUp/"; //  API endpoint
+        const URL = "http://localhost:8080/api/Signup/"; //  API endpoint
         const settings = {
             method: "POST",
             body: JSON.stringify({
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                email: formData.email,
-                password: formData.password,
-                street: formData.street,
-                postalCode: formData.postalCode,
-                city: formData.city,
-                phone: formData.phone,
-                role: formData.role
+            first_name: formData.firstName,  
+            last_name: formData.lastName,   
+            email: formData.email,
+            password: formData.password,
+            street: formData.street,
+            postal_code: formData.postalCode,
+            city: formData.city,
+            phone: formData.phone,
+            role: formData.role
             }),
             headers: {
                 "Content-Type": "application/json"
             }
         };
-    
+       
         try {
             const response = await fetch(URL, settings);
             if (!response.ok) {
@@ -44,9 +44,10 @@ function Signup() {
             }
             const data = await response.json();
             console.log("data here", data);
-    
+            navigate("/");
+        
             if (data.success) {
-                console.log('Signup successful:');
+                console.log('Signup successful:' , data.messag);
                 // Further actions on successful signup, e.g., redirect or display success message
             } else {
                 console.log('Signup failed:', data.message);

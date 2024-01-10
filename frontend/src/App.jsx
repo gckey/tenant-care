@@ -7,8 +7,8 @@ import Header from './components/Header';
 import MaintenanceReqList from './components/MaintenanceReqList';
 import { Routes, Route } from 'react-router-dom';
 import MaintenanceReqEditForm from './components/MaintenanceReqEditForm';
-
-
+import Admin from './components/Admin';
+import Signup from './components/Signup';
 
 
 //Render all components
@@ -39,6 +39,8 @@ function App() {
             element={<MaintenanceReqEditForm />}
           />
         </Route>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );

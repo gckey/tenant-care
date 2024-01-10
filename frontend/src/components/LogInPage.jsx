@@ -32,9 +32,15 @@ const handleLogin = async (event) => {
   // console.log(response);
   const data = await response.json();
   // console.log(data);
-  localStorage.setItem("user_id", data.user.id);
-  props.setUserInfo(data);
-  navigate("/maintenance-request");
+  if (data && data.user && data.user.id) {
+    localStorage.setItem("user_id", data.user.id);
+    props.setUserInfo(data);
+    navigate("/maintenance-request");
+} else {
+    console.error('Invalid data structure:', data);
+    // Handle the error case
+}
+
 
   if (data.success) {
       console.log('Login successful:', data.user);

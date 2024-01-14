@@ -8,7 +8,7 @@ const AdminDashboard = () => {
     const [requests, setRequests] = useState([]);
     const [currentView, setCurrentView] = useState('active'); // Possible values: 'active', 'history'
 
-    useEffect(() => {
+  
         const fetchRequests = async () => {
             try {
                 const response = await axios.get('http://localhost:8080/api/maintenance-requests/');
@@ -25,12 +25,8 @@ const AdminDashboard = () => {
             }
         };
 
-        fetchRequests();
-        const intervalId = setInterval(() => {
-            fetchRequests(); // function to fetch data from server
-        }, 5000); // Fetch data every 5 seconds
-    
-        return () => clearInterval(intervalId);
+        useEffect(() => {
+         fetchRequests();
     }, []);
 
     const handleStatusChange = async (e, requestId) => {
@@ -48,7 +44,7 @@ const AdminDashboard = () => {
             request.id === requestId ? { ...request, status: newStatus } : request
         );
         setRequests(updatedRequests);
-
+        fetchRequests(); 
         // Optionally, you can show a success message or handle the response
         console.log('Status updated:', response.data);
 

@@ -120,7 +120,7 @@ const MaintenanceReqEditForm = () => {
               Choose pic to upload:
             </label>
             <input
-              type="file"
+              type="text"
               id="pic"
               name="pic" 
               value={picVal}

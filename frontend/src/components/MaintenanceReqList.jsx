@@ -12,9 +12,9 @@ const MaintenanceReqList = (props) => {
 
   const addingMainteRequest = (newMaintenReq) => {
     setListOfMaintenanceReqts(prevList => [...prevList], newMaintenReq);
+    
   }
   
-  useEffect(() => {
     const fetchMainteReq = async () => {
       const URL = `http://localhost:8080/api/maintenance-requests/user/${props.userInfo.user.id}`;
       const settings = {
@@ -27,14 +27,10 @@ const MaintenanceReqList = (props) => {
       setListOfMaintenanceReqts(data);
 
     };
-    fetchMainteReq();
-    // const maintenInterval = setInterval(() => {
-    //   setListOfMaintenanceReqts(prev => prev + 1);
-    // }, 1000);
-
-    // return () => {
-    //   clearInterval(maintenInterval);
-    // };
+   
+    useEffect(() => {
+      fetchMainteReq();
+  
 }, []);
 
 // handle delete function
@@ -62,8 +58,11 @@ const handleDelete = async (id) => {
 // Function to handle edit
 const handleEdit = (id) => {
   // Redirect to the edit page with the maintenance request id
+  fetchMainteReq();
   navigate(`/maintenance-request/edit/${id}`);
+  
 };
+
 
   return (
     <div>
@@ -94,15 +93,17 @@ const handleEdit = (id) => {
               mainte_request={mainte_request} 
               onDelete={() => handleDelete(mainte_request.id)}//pass onDelete prop
               onEdit={() => handleEdit(mainte_request.id)}//pass onEdit prop
+
             />
-          ))}
+          )) }
         </tbody>
       </table>
       <br />
         <Link to="/maintenance-request/new">
           Report Issue
         </Link>
-        <Outlet addingMainteRequest={addingMainteRequest} />
+        <Outlet addingMainteRequest={addingMainteRequest} 
+      />
     </div>
   );
 };

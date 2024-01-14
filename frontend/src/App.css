@@ -1,16 +1,27 @@
+* {
+  box-sizing: border-box;
+}
 /* LoginPage css= login-wrapper */
 .login-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 8px;
+  min-width: 51rem;
+  max-width: 41rem;
+  padding: 32px;
+  margin-left: 550px;
 }
 
 .content-container {
   background-color: white;
   border-radius: 8px;
   min-width: 300px;
-  max-width: 800px;
+  max-width: 650px;
   padding: 32px;
+  margin-left: 233px;
 }
 
 
@@ -72,4 +83,51 @@ label {
 .navbar-right li button a {
   color: #fff;
   text-decoration: none;
+}
+
+.feature {
+  width: 320px;
+  float: left;
+  margin: 0 4px -4px 50;
+}
+
+.p1 {
+  font-size: large;
+}
+
+.column {
+  float: left;
+  padding: 45px;
+}
+.column.side {
+  width: 30%;
+}
+.column.middle {
+  width: 70%;
+}
+
+#p2 {
+  border-width: 9px;
+  border-style: solid;
+  border-color: #999999;
+  padding: 3%;
+  padding: 0;
+}
+
+.myspan {
+  font-size: 150%;
+  background-color: lightsalmon;
+}
+
+.input_1:not(:focus):not(:placeholder-shown):valid {
+  border: 2px solid #1bb517;
+}
+.input_1 {
+  all: unset;
+  color: #424242;
+  background: #FFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 0.25rem;
+  padding: 0.95rem .5rem;
+  width: 100%;
 }

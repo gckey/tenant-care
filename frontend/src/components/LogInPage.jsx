@@ -52,22 +52,24 @@ const handleLogin = async (event) => {
 }
   return (
     <div className="login-wrapper">
-      <h2>Please Log In</h2>
+      <h4>TenantCare App</h4>
+      <h4>Please Log In</h4>
       <form onSubmit={handleLogin}>
+      <div>
       <label>
-          <p>Enter email or username</p>
+          <h4>Email *</h4>
           <input
+            className="input_1"
             type="text"
             name="username"
             value={emailVal}
             onChange={e => setEmailVal(e.target.value)}             
             placeholder="alice@example.com"
           />
-        </label>
-        
-        <label>
-          <p>Enter password</p>
+        <br />
+          <h4>Password *</h4>
           <input
+            className="input_1"
             type="password"
             name="password"
             value={passwordVal}
@@ -75,6 +77,7 @@ const handleLogin = async (event) => {
             placeholder="Password"
           />
         </label>
+        </div>
         <br />
         <p className="submit">
           <button

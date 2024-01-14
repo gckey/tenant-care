@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
     
-    <div className="row">
+    <div className="row container">
       <div className="column side">
         <h2>Project Summary</h2>
         <p>

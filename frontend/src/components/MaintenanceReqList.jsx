@@ -65,7 +65,7 @@ const handleEdit = (id) => {
 
 
   return (
-    <div>
+    <div className="container">
       <h4><FaUser />
       <strong>Hello {props.userInfo.user.first_name} !<br/>{props.userInfo.user.street}</strong>
       </h4>

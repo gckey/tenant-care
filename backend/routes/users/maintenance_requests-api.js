@@ -6,7 +6,7 @@ router.post('/', async (req, res) => {
     try {
       const { user_id, description, priority, category, image_url, permission, status, feedback } = req.body;
       const newRequest = await maintenance_requests.createRequest({ user_id, description, priority, category, image_url, permission, status, feedback });
-      res.status(201).json("newRequest Success", newRequest);
+      res.status(201).json({ message: "newRequest Success", data: newRequest });
     } catch (err) {
       console.error(err.message);
       res.status(500).json('Server error');
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
       if (!request) {
         return res.status(404).json({ message: "Request not found" });
       }
-      res.json(request);
+      res.status(200).json(request);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -79,7 +79,7 @@ router.patch('/:id/status', async (req, res) => {
           return res.status(404).json({ message: "Request not found" });
       }
       sendMessage(`your status changed to : ${status} you can see further information in portal`)
-      res.json({ message: 'Status updated successfully' });
+      res.status(200).json({ message: 'Status updated successfully' });
   } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -94,7 +94,7 @@ router.patch('/:id/status', async (req, res) => {
       if (!deletedRequest) {
         return res.status(404).json({ message: "Request not found" });
       }
-      res.json({ message: "Request deleted successfully" });
+      res.status(200).json({ message: "Request deleted successfully" });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');

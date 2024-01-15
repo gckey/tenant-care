@@ -7,12 +7,15 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
-
+import { useContext } from 'react';
+import { AuthContext } from "./AuthContext";
 
 const LogInPage = (props) => {
+  const { setAuthenticationStatus } = useContext(AuthContext);
   const navigate = useNavigate();
   const [emailVal, setEmailVal] = useState("");
   const [passwordVal, setPasswordVal] = useState("");
+  const [error, setError] = useState("");
 
 const handleLogin = async (event) => {
   event.preventDefault();
@@ -41,14 +44,14 @@ const handleLogin = async (event) => {
     // Handle the error case
 }
 
+if (data.success) {
 
-  if (data.success) {
-      console.log('Login successful:', data.user);
-      // Further actions on successful login (e.g., redirect, store user data)
-  } else {
-      console.log('Login failed:', data.message);
-      // Handle login failure (e.g., show error message)
-  }
+  localStorage.setItem("userToken", data.token); // Store the token
+  setAuthenticationStatus(true); // Update global auth state
+  navigate("/maintenance-request");
+} else {
+  setError('Incorrect email or password.');
+}
 }
   return (
     <div className="login-wrapper">
@@ -86,6 +89,7 @@ const handleLogin = async (event) => {
             name="button">Log In
           </button>
         </p>
+        {error && <div className="error-message">{error}</div>}
         <button>Forgot password?</button>
         <p className="submit">
           <button 

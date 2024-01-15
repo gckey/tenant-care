@@ -61,99 +61,98 @@ function Signup() {
     
 
     return (
+        <div className="login-wrapper">
+            <h4>Register</h4>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>First Name</label>
+            <label>
+                <h4>First Name *</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
                     placeholder="First Name"
                 />
-            </div>
-            <div>
-                <label>Last Name</label>
+                <h4>Last Name *</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
                     placeholder="Last Name"
                 />
-            </div>
-            <div>
-                <label>Email</label>
+                <h4>Email *</h4>
                 <input
+                    className="input_1"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
                 />
-            </div>
-            <div>
-                <label>Password</label>
+                <h4>Password *</h4>
                 <input
+                    className="input_1"
                     type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password"
                 />
-            </div>
-            <div>
-                <label>Street</label>
+                <h4>Street</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="street"
                     value={formData.street}
                     onChange={handleChange}
                     placeholder="Street"
                 />
-            </div>
-            <div>
-                <label>Postal Code</label>
+                <h4>Postal Code</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="postalCode"
                     value={formData.postalCode}
                     onChange={handleChange}
                     placeholder="Postal Code"
                 />
-            </div>
-            <div>
-                <label>City</label>
+                <h4>City</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="City"
                 />
-            </div>
-            <div>
-                <label>Phone</label>
+                <h4>Phone</h4>
                 <input
+                    className="input_1"
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Phone"
                 />
-            </div>
-            <div>
-                <label>Role</label>
+                <h4>Role</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
                     placeholder="Role"
                 />
+            </label>
             </div>
+            <br />
             <button type="submit">Sign Up</button>
         </form>
+    </div>
     );
 }
 

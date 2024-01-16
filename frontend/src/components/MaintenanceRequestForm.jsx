@@ -103,15 +103,24 @@ const MaintenanceRequestForm = (props) => {
             <label htmlFor="description">
               Description:
             </label>
-            <input
+            <textarea
+              className="description_input"
+              // type="text"
+              id="description"
+              name="description"
+              value={descriptionVal}
+              onChange={e => setDescriptionVal(e.target.value)}>
+            </textarea>
+
+            {/* <input
               type="text"
               id="description"
               name="description"
               value={descriptionVal}
               onChange={e => setDescriptionVal(e.target.value)}
-            />
+            /> */}
           </div>   
-
+          <br />
           <div>
             <label htmlFor="permissionToEnter">
               Permission to Enter:

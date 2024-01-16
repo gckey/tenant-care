@@ -131,3 +131,7 @@ label {
   padding: 0.95rem .5rem;
   width: 100%;
 }
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

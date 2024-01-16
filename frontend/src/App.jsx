@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import MaintenanceReqEditForm from './components/MaintenanceReqEditForm';
 import Admin from './components/Admin';
 import Signup from './components/Signup';
-
+import { AuthProvider } from './components/AuthContext';
 
 //Render all components
 function App() {
@@ -18,6 +18,7 @@ function App() {
 
   
   return (
+    <AuthProvider>
     <div>
       <nav>
         <Header />
@@ -43,6 +44,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>
+    </AuthProvider>
   );
 };
 

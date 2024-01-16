@@ -60,28 +60,45 @@ const MaintenanceRequestForm = (props) => {
             <label htmlFor="priority">
               Priority:
             </label>
-            <input
+            <select 
               type="text"
-              id="priority"
-              name="priority"
-              value={priorityVal}
+              name="priority" 
+              id="priority" 
+              value={priorityVal} 
               onChange={e => setPriorityVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose priority--</option>
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="category">
               Category:
             </label>
-            <input
+            <select 
               type="text"
-              id="category"
-              name="category"
-              value={categoryVal}
+              name="category" 
+              id="category" 
+              value={categoryVal} 
               onChange={e => setCategoryVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose category--</option>
+              <option value="HVAC">HVAC</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Elevator">Elevator</option>
+              <option value="Flooring">Flooring</option>
+              <option value="Roofing">Roofing</option>
+              <option value="Pest-control">Pest Control</option>
+              <option value="Janitorial">Janitorial</option>
+              <option value="Countertops">Countertops</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="description">
               Description:
@@ -99,15 +116,19 @@ const MaintenanceRequestForm = (props) => {
             <label htmlFor="permissionToEnter">
               Permission to Enter:
             </label>
-            <input
+            <select 
               type="text"
-              id="permissionToEnter"
-              name="permissionToEnter"
-              value={permissionToEnterVal}
+              name="permissionToEnter" 
+              id="permissionToEnter" 
+              value={permissionToEnterVal} 
               onChange={e => setPermissionToEnterVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose yes or no--</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
           </div>         
-          
+          <br />
           <div>
             <label htmlFor="pic">
               Choose pic to upload:

@@ -60,28 +60,45 @@ const MaintenanceRequestForm = (props) => {
             <label htmlFor="priority">
               Priority:
             </label>
-            <input
+            <select 
               type="text"
-              id="priority"
-              name="priority"
-              value={priorityVal}
+              name="priority" 
+              id="priority" 
+              value={priorityVal} 
               onChange={e => setPriorityVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose priority--</option>
+              <option value="low">Low</option>
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+              <option value="critical">Critical</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="category">
               Category:
             </label>
-            <input
+            <select 
               type="text"
-              id="category"
-              name="category"
-              value={categoryVal}
+              name="category" 
+              id="category" 
+              value={categoryVal} 
               onChange={e => setCategoryVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose category--</option>
+              <option value="hvac">HVAC</option>
+              <option value="electrical">Electrical</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="elevator">Elevator</option>
+              <option value="flooring">Flooring</option>
+              <option value="roofing">Roofing</option>
+              <option value="pest-control">Pest Control</option>
+              <option value="janitorial">Janitorial</option>
+              <option value="countertops">Countertops</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="description">
               Description:

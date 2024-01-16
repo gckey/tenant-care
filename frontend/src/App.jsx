@@ -9,14 +9,10 @@ import { Routes, Route } from 'react-router-dom';
 import MaintenanceReqEditForm from './components/MaintenanceReqEditForm';
 import Admin from './components/Admin';
 import Signup from './components/Signup';
-import { AuthProvider } from './components/AuthContext';
-
+import { AuthProvider} from './components/AuthContext';
 //Render all components
 function App() {
   const [userInfo, setUserInfo] = useState({});
-
-
-  
   return (
     <AuthProvider>
     <div>
@@ -30,6 +26,7 @@ function App() {
           element={<LogInPage setUserInfo={setUserInfo}/>}
         />
         <Route path="/home" element={<HomePage />} />
+       
         <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo}/>}>
           <Route 
             path="/maintenance-request/new" 
@@ -40,6 +37,7 @@ function App() {
             element={<MaintenanceReqEditForm />}
           />
         </Route>
+        
         <Route path="/admin" element={<Admin />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

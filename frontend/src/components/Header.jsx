@@ -6,10 +6,13 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const navigate = useNavigate();
   const { isAuthenticated, setAuthenticationStatus } = useContext(AuthContext);
-
+ 
   const handleLogout = () => {
     // Remove the user's token or auth data from localStorage
-    localStorage.removeItem('userToken');
+    localStorage.clear();
+   // localStorage.removeItem('userToken');
+
+
 
     // Update the authentication status in your application state
     setAuthenticationStatus(false);
@@ -28,8 +31,12 @@ const Header = () => {
         </div>
         <ul className="nav navbar-nav">
           <li className="active"><Link to="/home">Home</Link></li>
-          <li><Link to="/maintenance">Request Maintenance</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li>
+          {isAuthenticated && (
+            <>
+              <li><Link to="/maintenance-request">Request Maintenance</Link></li>
+              <li><Link to="/dashboard">Dashboard</Link></li>
+            </>
+          )}
         </ul>
         <ul className="nav navbar-nav navbar-right nav-options">
           {isAuthenticated ? (

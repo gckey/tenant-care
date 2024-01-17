@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from "react-router";
 function Signup() {
     const [formData, setFormData] = useState({
         firstName: '',
@@ -12,31 +12,31 @@ function Signup() {
         phone: '',
         role: ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const URL = "http://localhost:8080/api/signUp/"; //  API endpoint
+        const URL = "http://localhost:8080/api/Signup/"; //  API endpoint
         const settings = {
             method: "POST",
             body: JSON.stringify({
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                email: formData.email,
-                password: formData.password,
-                street: formData.street,
-                postalCode: formData.postalCode,
-                city: formData.city,
-                phone: formData.phone,
-                role: formData.role
+            first_name: formData.firstName,  
+            last_name: formData.lastName,   
+            email: formData.email,
+            password: formData.password,
+            street: formData.street,
+            postal_code: formData.postalCode,
+            city: formData.city,
+            phone: formData.phone,
+            role: formData.role
             }),
             headers: {
                 "Content-Type": "application/json"
             }
         };
-    
+       
         try {
             const response = await fetch(URL, settings);
             if (!response.ok) {
@@ -44,9 +44,10 @@ function Signup() {
             }
             const data = await response.json();
             console.log("data here", data);
-    
+            navigate("/");
+        
             if (data.success) {
-                console.log('Signup successful:');
+                console.log('Signup successful:' , data.messag);
                 // Further actions on successful signup, e.g., redirect or display success message
             } else {
                 console.log('Signup failed:', data.message);
@@ -60,99 +61,98 @@ function Signup() {
     
 
     return (
+        <div className="login-wrapper">
+            <h4>Register</h4>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>First Name</label>
+            <label>
+                <h4>First Name *</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
                     placeholder="First Name"
                 />
-            </div>
-            <div>
-                <label>Last Name</label>
+                <h4>Last Name *</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
                     placeholder="Last Name"
                 />
-            </div>
-            <div>
-                <label>Email</label>
+                <h4>Email *</h4>
                 <input
+                    className="input_1"
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Email"
                 />
-            </div>
-            <div>
-                <label>Password</label>
+                <h4>Password *</h4>
                 <input
+                    className="input_1"
                     type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="Password"
                 />
-            </div>
-            <div>
-                <label>Street</label>
+                <h4>Street</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="street"
                     value={formData.street}
                     onChange={handleChange}
                     placeholder="Street"
                 />
-            </div>
-            <div>
-                <label>Postal Code</label>
+                <h4>Postal Code</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="postalCode"
                     value={formData.postalCode}
                     onChange={handleChange}
                     placeholder="Postal Code"
                 />
-            </div>
-            <div>
-                <label>City</label>
+                <h4>City</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="city"
                     value={formData.city}
                     onChange={handleChange}
                     placeholder="City"
                 />
-            </div>
-            <div>
-                <label>Phone</label>
+                <h4>Phone</h4>
                 <input
+                    className="input_1"
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Phone"
                 />
-            </div>
-            <div>
-                <label>Role</label>
+                <h4>Role</h4>
                 <input
+                    className="input_1"
                     type="text"
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
                     placeholder="Role"
                 />
+            </label>
             </div>
+            <br />
             <button type="submit">Sign Up</button>
         </form>
+    </div>
     );
 }
 

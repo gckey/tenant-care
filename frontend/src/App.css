@@ -130,3 +130,17 @@ label {
   display: flex;
   justify-content: center;
 }
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.description_input {
+  width: 205px;
+  height: 150px;
+}
+
+textarea{
+  vertical-align: middle;
+}

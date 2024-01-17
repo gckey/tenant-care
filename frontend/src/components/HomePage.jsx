@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <>
     
-    <div className="row">
+    <div className="row container">
       <div className="column side">
         <img src="/maintenance@2x_0.png.webp" width="373" height="359" alt="landing page image" className="feature"/>
       </div>

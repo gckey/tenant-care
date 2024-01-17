@@ -93,30 +93,21 @@ label {
 
 .p1 {
   font-size: large;
+  font-family: Gill Sans, Gill Sans MT, Myriad Pro, DejaVu Sans Condensed, Helvetica, Arial, "sans-serif";
 }
 
 .column {
   float: left;
-  padding: 45px;
+  padding: 20px;
 }
 .column.side {
-  width: 30%;
+  width: 25%;
 }
 .column.middle {
-  width: 70%;
+  width: 40%;
 }
-
-#p2 {
-  border-width: 9px;
-  border-style: solid;
-  border-color: #999999;
-  padding: 3%;
-  padding: 0;
-}
-
-.myspan {
-  font-size: 150%;
-  background-color: lightsalmon;
+.column.right {
+  width: 35%;
 }
 
 .input_1:not(:focus):not(:placeholder-shown):valid {
@@ -130,4 +121,12 @@ label {
   border-radius: 0.25rem;
   padding: 0.95rem .5rem;
   width: 100%;
+}
+
+.footer {
+  background-color: #54858C;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
 }

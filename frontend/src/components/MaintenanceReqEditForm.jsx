@@ -67,68 +67,90 @@ const MaintenanceReqEditForm = () => {
             <label htmlFor="priority">
               Priority:
             </label>
-            <input
+            <select
               type="text"
-              id="priority"
               name="priority"
+              id="priority"
               value={priorityVal}
               onChange={e => setPriorityVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose priority--</option>
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="category">
               Category:
             </label>
-            <input
+            <select
               type="text"
-              id="category"
               name="category"
+              id="category"
               value={categoryVal}
               onChange={e => setCategoryVal(e.target.value)}
-            />
+            >
+              <option value="">--Please choose category--</option>
+              <option value="HVAC">HVAC</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Elevator">Elevator</option>
+              <option value="Flooring">Flooring</option>
+              <option value="Roofing">Roofing</option>
+              <option value="Pest-control">Pest Control</option>
+              <option value="Janitorial">Janitorial</option>
+              <option value="Appliances">Appliances</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor="description">
-              Description:
+              Maintenance Request Details:
             </label>
-            <input
-              type="text"
+            <textarea
+              className="description_input"
+              // type="text"
               id="description"
               name="description"
               value={descriptionVal}
-              onChange={e => setDescriptionVal(e.target.value)}
-            />
-          </div>   
-
+              onChange={e => setDescriptionVal(e.target.value)}>
+            </textarea>
+          </div>
+          <br />
           <div>
             <label htmlFor="permissionToEnter">
-              Permission to Enter:
+              Permission to Enter Site:
             </label>
-            <input
+            <select
               type="text"
-              id="permissionToEnter"
               name="permissionToEnter"
+              id="permissionToEnter"
               value={permissionToEnterVal}
               onChange={e => setPermissionToEnterVal(e.target.value)}
-            />
-          </div>         
-          
+            >
+              <option value="">--Please choose yes or no--</option>
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <br />
           <div>
             <label htmlFor="pic">
-              Choose pic to upload:
+              Choose Picture To Upload:
             </label>
             <input
               type="text"
               id="pic"
-              name="pic" 
+              name="pic"
               value={picVal}
               onChange={e => setPicVal(e.target.value)}
             />
           </div>
-          <br /><br/>
-
+          <br /><br />
           <button className="btn btn-primary">Submit Edit</button>
         </form>
       </div>

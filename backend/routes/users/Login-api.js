@@ -13,9 +13,9 @@ router.post('/', async (req, res) => {
 
         if (userQuery.rows.length > 0) {
             const user = userQuery.rows[0];
-            
+
             // Ideally, use hashed passwords and a library like bcrypt to compare
-           // if (user.password === password) {
+            // if (user.password === password) {
             const match = await bcrypt.compare(password, user.password);
             if (match) {
                 // Return only necessary user info, exclude sensitive data like password
@@ -31,7 +31,5 @@ router.post('/', async (req, res) => {
         res.status(500).json({ success: false, message: 'Server error', error: err.message });
     }
 });
-
-
 
 module.exports = router;

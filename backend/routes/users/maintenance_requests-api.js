@@ -78,7 +78,7 @@ router.patch('/:id/status', async (req, res) => {
     if (result === 0) {
       return res.status(404).json({ message: "Request not found" });
     }
-    sendMessage(`your status changed to : ${status} you can see further information in portal`)
+    sendMessage(`Your maintenance request ID ${id} status changed to : ${status}. Please sign in to your account for more information.`)
     res.status(200).json({ message: 'Status updated successfully' });
   } catch (err) {
     console.error(err.message);

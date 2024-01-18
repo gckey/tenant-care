@@ -9,39 +9,40 @@ import { Routes, Route } from 'react-router-dom';
 import MaintenanceReqEditForm from './components/MaintenanceReqEditForm';
 import Admin from './components/Admin';
 import Signup from './components/Signup';
-import { AuthProvider} from './components/AuthContext';
+import { AuthProvider } from './components/AuthContext';
 //Render all components
 function App() {
   const [userInfo, setUserInfo] = useState({});
   return (
     <AuthProvider>
-    <div>
-      <nav>
-        <Header />
-      </nav>
-      <Routes>
-        <Route path="/" element={<LogInPage setUserInfo={setUserInfo}/>}/>
-        <Route 
-          path="/login" 
-          element={<LogInPage setUserInfo={setUserInfo}/>}
-        />
-        <Route path="/home" element={<HomePage />} />
-       
-        <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo}/>}>
-          <Route 
-            path="/maintenance-request/new" 
-            element={<MaintenanceRequestForm />}
+      <div>
+        <nav>
+          <Header />
+        </nav>
+        <Routes>
+          <Route path="/" element={<LogInPage setUserInfo={setUserInfo} />} />
+          <Route
+            path="/login"
+            element={<LogInPage setUserInfo={setUserInfo} />}
           />
-          <Route 
-            path="/maintenance-request/edit/:id" 
-            element={<MaintenanceReqEditForm />}
-          />
-        </Route>
-        
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </div>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/maintenance-request" element={<MaintenanceReqList userInfo={userInfo} />}>
+            <Route
+              path="/maintenance-request/new"
+              element={<MaintenanceRequestForm />}
+            />
+            <Route
+              path="/maintenance-request/edit/:id"
+              element={<MaintenanceReqEditForm />}
+            />
+          </Route>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </div>
+      <div class="footer">
+        <p>© 2024 Lighthouse Web Development Final Project | By Abdurahman and Bereket.</p>
+      </div>
     </AuthProvider>
   );
 };

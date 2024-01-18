@@ -1,4 +1,4 @@
-import { Link  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -6,21 +6,14 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const navigate = useNavigate();
   const { isAuthenticated, setAuthenticationStatus } = useContext(AuthContext);
- 
+
   const handleLogout = () => {
     // Remove the user's token or auth data from localStorage
     localStorage.clear();
-   // localStorage.removeItem('userToken');
-
-
-
     // Update the authentication status in your application state
     setAuthenticationStatus(false);
     // Redirect to login page or home page after logout
     navigate("/login");
-      
-  
-   
   };
 
   return (
@@ -34,7 +27,6 @@ const Header = () => {
           {isAuthenticated && (
             <>
               <li><Link to="/maintenance-request">Request Maintenance</Link></li>
-              <li><Link to="/dashboard">Dashboard</Link></li>
             </>
           )}
         </ul>

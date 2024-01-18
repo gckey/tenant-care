@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 /* LoginPage css= login-wrapper */
 .login-wrapper {
   display: flex;
@@ -23,8 +24,6 @@
   padding: 32px;
   margin-left: 233px;
 }
-
-
 
 .nav-options {
   display: flex;
@@ -100,12 +99,15 @@ label {
   float: left;
   padding: 20px;
 }
+
 .column.side {
   width: 25%;
 }
+
 .column.middle {
   width: 40%;
 }
+
 .column.right {
   width: 35%;
 }
@@ -113,6 +115,7 @@ label {
 .input_1:not(:focus):not(:placeholder-shown):valid {
   border: 2px solid #1bb517;
 }
+
 .input_1 {
   all: unset;
   color: #424242;
@@ -126,9 +129,10 @@ label {
 .footer {
   background-color: #54858C;
   color: white;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .error-message {
@@ -141,6 +145,6 @@ label {
   height: 150px;
 }
 
-textarea{
+textarea {
   vertical-align: middle;
 }
